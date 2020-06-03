@@ -5,8 +5,7 @@ import {connect} from 'react-redux'
 import * as actions from '../actions'
 import Landing from './Landing'
 import Surveys from './Surveys'
-
-const Dashboard = () => <h2>Dashboard</h2>;
+import Dashboard from './Dashboard'
 
 class App extends React.Component {
   componentDidMount(){
