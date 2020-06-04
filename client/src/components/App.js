@@ -6,6 +6,7 @@ import * as actions from '../actions'
 import Landing from './Landing'
 import Surveys from './Surveys'
 import Dashboard from './Dashboard'
+import SurveyNew from './surveys/SurveyNew'
 
 class App extends React.Component {
   componentDidMount(){
@@ -19,7 +20,7 @@ class App extends React.Component {
         <Switch>
           <Route exact path="/" component={Landing} />
           <Route exact path="/surveys" component={Dashboard} />
-          <Route path="/surveys/new" component={Surveys} />
+          <Route path="/surveys/new" component={SurveyNew} />
         </Switch>
       </BrowserRouter>
     </div>
