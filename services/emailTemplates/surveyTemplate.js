@@ -7,8 +7,8 @@ module.exports = (survey) => {
                         <h3> Id like your input </h3>
                         <p> please answer the question: </p>
                             <p>${survey.body}</p>
-                            <div><a href="${keys.redirectDomain}/api/surveys/thanks">Yes</a></div> 
-                            <div><a href="${keys.redirectDomain}/api/surveys/thanks">No</a></div> 
+                            <div><a href="${keys.redirectDomain}/api/surveys/${survey.id}/yes">Yes</a></div> 
+                            <div><a href="${keys.redirectDomain}/api/surveys/${survey.id}/no">No</a></div> 
                     </div>
                 </body>
             </html>`
