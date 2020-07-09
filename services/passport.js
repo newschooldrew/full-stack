@@ -1,5 +1,6 @@
 const passport = require('passport')
 const GoogleStrategy = require('passport-google-oauth20').Strategy;
+const FacebookStrategy = require('passport-facebook').Strategy;
 const monogoose = require('mongoose')
 const keys = require('../config/keys')
 const User = monogoose.model('users')
@@ -41,3 +42,21 @@ passport.use(new GoogleStrategy(
                 }
             )
         )
+
+        passport.use(new FacebookStrategy({
+            clientID: '291124771037034',
+            clientSecret: '28b8591fe22c658fc756e8f6243d6fc8',
+            callbackURL: "/auth/facebook/callback"
+          },async (accessToken, refreshToken, profile,done)=>{
+            const existingUser = await User.findOne({facebookId:profile.id})
+                    if(existingUser){
+                        // 1. error is null
+                        // 2. here is the user we found
+                        console.log(existingUser)
+                        done(null,existingUser);
+                    } else{
+                        const user = await new User({facebookId:profile.id}).save()
+                        done(null,user)
+                    }
+                }
+        ));

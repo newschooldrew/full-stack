@@ -21,4 +21,17 @@ module.exports = app =>{
     app.get('/api/current_user',(req,res) =>{
         res.send(req.user)
     })
+
+    ////////////////////////// FACEBOOK ////////////////////////
+
+    app.get('/auth/facebook',
+    passport.authenticate('facebook', { scope: 'email' }));
+  
+  app.get('/auth/facebook/callback',
+    passport.authenticate('facebook', { failureRedirect: '/login' }),
+    function(req, res) {
+      res.redirect('/surveys');
+    });
+
+
 }
